@@ -1,1024 +1,874 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Feliz cumpleaños, VANIA HERMOSA 💗</title>
-
-<style>
-
-/* =========================
-   CONFIGURACIÓN GENERAL
-========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
-}
-
-/* =========================
-   PANTALLA PRINCIPAL
-========================= */
-
-.pantalla {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Fondo naranja */
-
-#inicio {
-    background: #f7a8c4;
-}
-#sorpresa {
-    background: #f7a8c4;
-}
-
-/* Garabatos del fondo */
-
-.garabatos {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.garabato {
-    position: absolute;
-    color: #171717;
-    font-size: 55px;
-    font-weight: 900;
-    opacity: 0.9;
-    transform: rotate(-10deg);
-}
-
-.g1 { top: -15px; left: -10px; }
-.g2 { top: 20px; right: -15px; transform: rotate(15deg); }
-.g3 { bottom: -20px; left: 20px; transform: rotate(8deg); }
-.g4 { bottom: 20px; right: -15px; transform: rotate(-15deg); }
-.g5 { top: 42%; left: -25px; transform: rotate(20deg); }
-.g6 { top: 45%; right: -25px; transform: rotate(-20deg); }
-
-/* =========================
-   TARJETA
-========================= */
-
-.tarjeta {
-    position: relative;
-    z-index: 5;
-
-    width: min(88%, 650px);
-    min-height: 520px;
-
-    background: #fffdf9;
-
-    border: 3px solid #161616;
-    border-radius: 28px;
-
-    box-shadow: 0 12px 0 #171717;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    padding: 40px 25px;
-
-    text-align: center;
-}
-
-/* =========================
-   PERSONAJE
-========================= */
-
-.personaje {
-    width: 125px;
-    height: 145px;
-    position: relative;
-    margin-bottom: 10px;
-    animation: flotar 3s ease-in-out infinite;
-}
-
-/* cabeza */
-
-.cabeza {
-    width: 72px;
-    height: 75px;
-    background: #f6c6a9;
-    border: 3px solid #171717;
-    border-radius: 45% 45% 48% 48%;
-    position: absolute;
-    top: 20px;
-    left: 27px;
-    z-index: 3;
-}
-
-/* cabello */
-
-.cabello {
-    width: 82px;
-    height: 55px;
-    background: #222;
-    border-radius: 50% 50% 35% 35%;
-    position: absolute;
-    top: 8px;
-    left: 21px;
-    z-index: 4;
-}
-
-.cabello::before,
-.cabello::after {
-    content: "";
-    position: absolute;
-    width: 32px;
-    height: 42px;
-    background: #222;
-    border-radius: 50%;
-    top: 12px;
-}
-
-.cabello::before {
-    left: -17px;
-}
-
-.cabello::after {
-    right: -17px;
-}
-
-/* ojos */
-
-.ojo {
-    position: absolute;
-    width: 5px;
-    height: 8px;
-    background: #111;
-    border-radius: 50%;
-    top: 51px;
-    z-index: 6;
-}
-
-.ojo1 {
-    left: 47px;
-}
-
-.ojo2 {
-    left: 75px;
-}
-
-/* boca */
-
-.boca {
-    position: absolute;
-    width: 15px;
-    height: 8px;
-    border-bottom: 2px solid #111;
-    border-radius: 50%;
-    top: 66px;
-    left: 55px;
-    z-index: 6;
-}
-
-/* cuerpo */
-
-.cuerpo {
-    width: 65px;
-    height: 55px;
-    background: #e75b3e;
-    border: 3px solid #171717;
-    border-radius: 22px 22px 12px 12px;
-    position: absolute;
-    top: 92px;
-    left: 30px;
-    z-index: 2;
-}
-
-/* piernas */
-
-.pierna {
-    width: 10px;
-    height: 25px;
-    background: #222;
-    position: absolute;
-    top: 133px;
-    z-index: 1;
-}
-
-.pierna1 {
-    left: 45px;
-    transform: rotate(5deg);
-}
-
-.pierna2 {
-    left: 70px;
-    transform: rotate(-5deg);
-}
-
-/* corazones */
-
-.corazones {
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #e74739;
-    font-size: 20px;
-    letter-spacing: 4px;
-}
-
-/* =========================
-   TEXTO
-========================= */
-
-.titulo {
-    font-family: Impact, "Arial Black", sans-serif;
-    font-size: clamp(32px, 6vw, 55px);
-    color: #e85d9e;
-
-    -webkit-text-stroke: 1.5px #171717;
-
-    text-shadow:
-        3px 3px 0 #171717,
-        0 0 12px rgba(255, 255, 255, 0.6);
-
-    line-height: 0.95;
-    margin-top: 5px;
-
-    animation: brilloTitulo 2s ease-in-out infinite;
-}
-
-@keyframes brilloTitulo {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.03);
-    }
-}
-
-/* =========================
-   BOTONES
-========================= */
-
-.botones {
-    display: flex;
-    gap: 15px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.boton {
-    border: 2px solid #171717;
-    background: #ffffff;
-    color: #7a1648;
-
-    padding: 13px 23px;
-
-    border-radius: 50px;
-
-    font-weight: 900;
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s,
-        background 0.2s,
-        box-shadow 0.2s;
-
-    box-shadow: 0 5px 0 #c83d7c;
-}
-
-.boton:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 0 #c83d7c;
-.boton {
-    animation: aparecerBoton 0.6s ease both;
-}
-
-@keyframes aparecerBoton {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-@keyframes aparecerBoton {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-}
-
-.boton:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #c83d7c;
-}
-
-.boton:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 5px 0 #171717;
-}
-
-.boton-si {
-     background: #ff9dcc;
-    color: #7a1648;
-    border: 2px solid #171717;
-    font-weight: 900;
-}
-
-.boton-si:hover {
-    background: #ffb8a5;
-}
-
-/* =========================
-   PANTALLA SORPRESA
-========================= */
-
-#sorpresa {
-    display: none;
-    background:
-        radial-gradient(circle at 20% 20%, #ffd8cf 0 5%, transparent 6%),
-        radial-gradient(circle at 80% 30%, #ffc7ba 0 4%, transparent 5%),
-        #f47745;
-
-    padding: 30px 15px;
-}
-
-.carta-sorpresa {
-    position: relative;
-    z-index: 5;
-
-    width: min(92%, 750px);
-
-    background:#fff0f7;	
-
-    border: 3px solid #171717;
-    border-radius: 30px;
-
-    box-shadow: 0 12px 0 #171717;
-
-    padding: 45px 30px;
-
-    text-align: center;
-animation: aparecerCarta 0.8s ease;
-}
-
-.carta-sorpresa h1 {
-    font-family: "Arial Black", Arial, sans-serif;
-    color: #e85d9e;
-    font-size: clamp(35px, 7vw, 60px);
-
-    -webkit-text-stroke: 1px #171717;
-
-    margin-bottom: 20px;
-animation: sorpresaTitulo 1.8s ease-in-out infinite;
-}
-
-.nombre {
-    color: #c83d7c;
-    font-size: clamp(24px, 5vw, 40px);
-    font-weight: 900;
-    margin-bottom: 25px;
-
-    text-shadow: 2px 2px 0 #ffd6e7;
-
-    animation: nombreBrilla 2s ease-in-out infinite;
-}
-
-@keyframes nombreBrilla {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.03);
-    }
-}
-}
-
-.mensaje {
-  font-size: 18px;
-    line-height: 1.7;
-    color: #6b3450;
-    max-width: 600px;
-    margin: auto;
-    font-weight: 600;
-}
-
-/* =========================
-   CORAZÓN GRANDE
-========================= */
-
-.corazon-grande {
-    font-size: 80px;
-    margin: 15px 0;
-    animation: latido 1.2s infinite;
-}
-
-/* =========================
-   BOTÓN VOLVER
-========================= */
-
-.volver {
-    margin-top: 30px;
-    background: #ff9dcc;
-    color: #7a1648;
-    border: 2px solid #171717;
-    box-shadow: 0 5px 0 #c83d7c;
-}
-
-/* =========================
-   CORAZONES FLOTANDO
-========================= */
-
-.corazon-flotante {
-    position: fixed;
-    bottom: -30px;
-    font-size: 25px;
-    animation: subir 5s linear forwards;
-    pointer-events: none;
-    z-index: 20;
-}
-
-/* =========================
-   ANIMACIONES
-========================= */
-
-@keyframes flotar {
-
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-@keyframes latido {
-
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.18);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-}
-
-@keyframes subir {
-
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-110vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 500px) {
-
-    .tarjeta {
-        min-height: 500px;
-        padding: 30px 18px;
-    }
-
-    .botones {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .boton {
-        width: 100%;
-    }
-
-    .carta-sorpresa {
-        padding: 35px 20px;
-    }
-
-    .mensaje {
-        font-size: 16px;
-    }
-}
-
-.galeria {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin: 25px auto;
-    max-width: 650px;
-}
-
-.foto-card {
-    background: white;
-    border: 3px solid #e85d9e;
-    border-radius: 20px;
-    padding: 8px;
-    width: 170px;
-    box-shadow: 0 5px 0 #f3a0c4;
-}
-
-.foto-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 14px;
-    display: block;
-}
-
-.foto-card p {
-    color: #c83d7c;
-    font-weight: 900;
-    font-size: 13px;
-    margin-top: 8px;
-    line-height: 1.3;
-}.personaje {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 15px auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-animation: flotar 3s ease-in-out infinite;
-}
-
-.personaje img {
-    width: 220px;
-    height: 220px;
-    object-fit: contain;
-    display: block;
-   filter: drop-shadow(0 6px 4px rgba(180, 60, 120, 0.25));
-}
-}@keyframes flotar {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}.corazones-pinkie {
-    font-size: 25px;
-    margin-bottom: -5px;
-    animation: latirCorazones 1.5s infinite;
-}
-
-@keyframes latirCorazones {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.15);
-    }
-.corazon-flotante {
-    position: fixed;
-    bottom: -30px;
-    font-size: 25px;
-    animation: subirCorazon 5s linear forwards;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-@keyframes subirCorazon {
-    from {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    to {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
-}.corazon-grande {
-    font-size: 65px;
-    animation: latirCorazon 1.2s ease-in-out infinite;
-}
-
-@keyframes latirCorazon {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.18);
-    }
-}
-@keyframes aparecerCarta {
-    from {
-        opacity: 0;
-        transform: scale(0.85) translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-@keyframes sorpresaTitulo {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.04);
-    }
-}
-}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VANIA HERMOSA 💗</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =====================================
+           PANTALLAS
+        ===================================== */
+
+        .pantalla {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #inicio {
+            background: #f7a8c4;
+        }
+
+        #sorpresa {
+            background: #f7a8c4;
+            display: none;
+        }
+
+
+        /* =====================================
+           CARTA PRINCIPAL
+        ===================================== */
+
+        .carta {
+            position: relative;
+            z-index: 5;
+            width: min(92%, 650px);
+            background: #fffdfb;
+            border: 3px solid #171717;
+            border-radius: 30px;
+            box-shadow: 0 12px 0 #171717;
+            padding: 35px 25px 40px;
+            text-align: center;
+            animation: aparecerCarta 0.8s ease;
+        }
+
+        @keyframes aparecerCarta {
+            from {
+                opacity: 0;
+                transform: scale(0.85) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+
+        /* =====================================
+           PINKIE PIE
+        ===================================== */
+
+        .corazones-pinkie {
+            font-size: 25px;
+            margin-bottom: -5px;
+            animation: latirCorazones 1.5s infinite;
+        }
+
+        @keyframes latirCorazones {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .personaje {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px -3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: flotar 3s ease-in-out infinite;
+        }
+
+        .personaje img {
+            width: 220px;
+            height: 220px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 6px 4px rgba(180, 60, 120, 0.25));
+        }
+
+        @keyframes flotar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+
+        /* =====================================
+           TITULO
+        ===================================== */
+
+        .titulo {
+            font-family: Impact, "Arial Black", sans-serif;
+            font-size: clamp(32px, 6vw, 55px);
+            color: #e85d9e;
+            -webkit-text-stroke: 1.5px #171717;
+            text-shadow:
+                3px 3px 0 #171717,
+                0 0 12px rgba(255, 255, 255, 0.6);
+            line-height: 0.95;
+            margin-top: 5px;
+            animation: brilloTitulo 2s ease-in-out infinite;
+        }
+
+        @keyframes brilloTitulo {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        .subtitulo {
+            font-family: "Arial Black", Arial, sans-serif;
+            font-size: clamp(17px, 3vw, 25px);
+            color: #171717;
+            margin-top: 15px;
+        }
+
+
+        /* =====================================
+           BOTONES
+        ===================================== */
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .boton {
+            border: 2px solid #171717;
+            background: #ffffff;
+            color: #7a1648;
+            padding: 13px 23px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 14px;
+            cursor: pointer;
+            transition:
+                transform 0.2s,
+                background 0.2s,
+                box-shadow 0.2s;
+            box-shadow: 0 5px 0 #c83d7c;
+            animation: aparecerBoton 0.6s ease both;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 0 #c83d7c;
+        }
+
+        .boton:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #c83d7c;
+        }
+
+        .boton-si {
+            background: #ff9dcc;
+            color: #7a1648;
+            border: 2px solid #171717;
+            font-weight: 900;
+        }
+
+        @keyframes aparecerBoton {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+        /* =====================================
+           INTRO SORPRESA
+        ===================================== */
+
+        #intro-sorpresa {
+            position: fixed;
+            inset: 0;
+            background: #ff9dcc;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: desaparecerIntro 1s ease 3s forwards;
+        }
+
+        #intro-sorpresa h1 {
+            color: white;
+            font-size: clamp(30px, 7vw, 50px);
+            font-weight: 900;
+            text-shadow: 3px 3px 0 #c83d7c;
+            margin: 15px;
+            animation: aparecerTexto 1s ease;
+        }
+
+        #intro-sorpresa p {
+            color: #7a1648;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .intro-corazones {
+            font-size: 45px;
+            animation: latirIntro 1s infinite;
+        }
+
+        @keyframes latirIntro {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes aparecerTexto {
+
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes desaparecerIntro {
+
+            to {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+        }
+
+
+        /* =====================================
+           CARTA DE SORPRESA
+        ===================================== */
+
+        .carta-sorpresa {
+            position: relative;
+            z-index: 5;
+            width: min(92%, 750px);
+            background: #fff0f7;
+            border: 3px solid #171717;
+            border-radius: 30px;
+            box-shadow: 0 12px 0 #171717;
+            padding: 45px 30px;
+            text-align: center;
+            animation: aparecerCarta 0.8s ease;
+            margin: 30px 0;
+        }
+
+        .carta-sorpresa h1 {
+            font-family: "Arial Black", Arial, sans-serif;
+            color: #e85d9e;
+            font-size: clamp(35px, 7vw, 60px);
+            -webkit-text-stroke: 1px #171717;
+            margin-bottom: 20px;
+            animation: sorpresaTitulo 1.8s ease-in-out infinite;
+        }
+
+        @keyframes sorpresaTitulo {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        .nombre {
+            color: #c83d7c;
+            font-size: clamp(24px, 5vw, 40px);
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 #ffd6e7;
+            animation: nombreBrilla 2s ease-in-out infinite;
+        }
+
+        @keyframes nombreBrilla {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        .corazon-grande {
+            font-size: 65px;
+            animation: latirCorazon 1.2s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes latirCorazon {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+
+        /* =====================================
+           GALERIA
+        ===================================== */
+
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px auto;
+            max-width: 650px;
+        }
+
+        .foto-card {
+            background: white;
+            border: 3px solid #e85d9e;
+            border-radius: 20px;
+            padding: 8px;
+            width: 170px;
+            box-shadow: 0 5px 0 #f3a0c4;
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .foto-card p {
+            color: #c83d7c;
+            font-weight: 900;
+            font-size: 13px;
+            margin-top: 8px;
+            line-height: 1.3;
+        }
+
+
+        /* =====================================
+           MENSAJE
+        ===================================== */
+
+        .mensaje {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #6b3450;
+            max-width: 600px;
+            margin: auto;
+            font-weight: 600;
+        }
+
+        .volver {
+            margin-top: 30px;
+            background: #ff9dcc;
+            color: #7a1648;
+            border: 2px solid #171717;
+            box-shadow: 0 5px 0 #c83d7c;
+        }
+
+
+        /* =====================================
+           CORAZONES FLOTANTES
+        ===================================== */
+
+        .corazon-flotante {
+            position: fixed;
+            bottom: -30px;
+            font-size: 25px;
+            animation: subirCorazon 5s linear forwards;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes subirCorazon {
+
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================
+           CORAZONES DECORATIVOS
+        ===================================== */
+
+        .decoracion {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.8;
+            animation: flotarDecoracion 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .decoracion:nth-child(1) {
+            top: 10%;
+            left: 5%;
+        }
+
+        .decoracion:nth-child(2) {
+            top: 18%;
+            right: 5%;
+            animation-delay: 1s;
+        }
+
+        .decoracion:nth-child(3) {
+            bottom: 12%;
+            left: 8%;
+            animation-delay: 0.5s;
+        }
+
+        .decoracion:nth-child(4) {
+            bottom: 18%;
+            right: 8%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes flotarDecoracion {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+
+        /* =====================================
+           MOVIL
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .carta {
+                padding: 25px 15px 30px;
+            }
+
+            .personaje,
+            .personaje img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .foto-card {
+                width: 145px;
+            }
+
+            .foto-card img {
+                height: 155px;
+            }
+
+            .mensaje {
+                font-size: 16px;
+            }
+
+            .carta-sorpresa {
+                padding: 30px 15px;
+            }
+
+        }
+
+    </style>
 </head>
 
 
 <body>
-<div id="intro-sorpresa">
-    <div class="intro-corazones">💗 💕 💗</div>
-    <h1>✨ ¡SORPRESA, VANIA! ✨</h1>
-    <p>Preparé esto especialmente para ti 💗</p>
-</div>
 
 
-<!-- =====================================
-     PANTALLA INICIAL
-===================================== -->
+    <!-- =====================================
+         PANTALLA INICIAL
+    ===================================== -->
 
-<section id="inicio" class="pantalla">
+    <section id="inicio" class="pantalla">
 
-    <!-- Garabatos -->
-
-    <div class="garabatos">
-
-        <div class="garabato g1">♡</div>
-        <div class="garabato g2">♡</div>
-        <div class="garabato g3">✿</div>
-        <div class="garabato g4">♡</div>
-        <div class="garabato g5">✦</div>
-        <div class="garabato g6">♡</div>
-
-    </div>
+        <div class="decoracion">💗</div>
+        <div class="decoracion">💕</div>
+        <div class="decoracion">💖</div>
+        <div class="decoracion">💞</div>
 
 
-    <!-- Tarjeta -->
+        <div class="carta">
 
-    <div class="tarjeta">
-
-
-        <!-- Personaje -->
-
-        <div class="corazones-pinkie">
-    💗 💕 💗
-</div>
-<div class="personaje">
-    <img src="fotos/pinkie-pie.png" alt="Pinkie Pie">
-</div>
+            <div class="corazones-pinkie">
+                💗 💕 💗
+            </div>
 
 
-        <!-- Título -->
-
-        <h1 class="titulo">
-            FELIZ CUMPLEAÑOS<br>
-            VANIA HERMOSA
-        </h1>
+            <div class="personaje">
+                <img src="fotos/pinkie-pie.png" alt="Pinkie Pie">
+            </div>
 
 
-        <p class="subtitulo">
-            ¿QUIERES VER TU SORPRESA?
-        </p>
+            <h1 class="titulo">
+                FELIZ CUMPLEAÑOS<br>
+                VANIA HERMOSA
+            </h1>
 
 
-        <!-- Botones -->
+            <p class="subtitulo">
+                ¿QUIERES VER TU SORPRESA?
+            </p>
 
-        <div class="botones">
+
+            <div class="botones">
+
+                <button class="boton" onclick="botonNo()">
+                    NO GRACIAS 😭
+                </button>
+
+                <button class="boton boton-si" onclick="mostrarSorpresa()">
+                    SÍ PORFAVOR 💗
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PANTALLA SORPRESA
+    ===================================== -->
+
+    <section id="sorpresa" class="pantalla">
+
+        <div class="carta-sorpresa">
+
+            <h1>
+                💗 SORPRESA 💗
+            </h1>
+
+
+            <div class="nombre">
+                PARA TI, VANIA HERMOSA
+            </div>
+
+
+            <div class="corazon-grande">
+                ❤️
+            </div>
+
+
+            <!-- GALERIA -->
+
+            <div class="galeria">
+
+                <div class="foto-card">
+
+                    <img
+                        src="fotos/foto1.png"
+                        alt="Nuestro recuerdo">
+
+                    <p>
+                        Un recuerdo que siempre voy a guardar 💗
+                    </p>
+
+                </div>
+
+
+                <div class="foto-card">
+
+                    <img
+                        src="fotos/foto2.png"
+                        alt="Nuestro recuerdo">
+
+                    <p>
+                        Momentos contigo que me hacen feliz 🥹💗
+                    </p>
+
+                </div>
+
+
+                <div class="foto-card">
+
+                    <img
+                        src="fotos/foto3.png"
+                        alt="Nuestro recuerdo">
+
+                    <p>
+                        Y LA GUAPA DE MI NOVIA ✨
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAJE -->
+
+            <p class="mensaje">
+
+                HOY 29 DE SEPTIEMBRE,<br>
+                NACIÓ UNA GRAN PERSONA<br>
+                LLAMADA VANIA. ❤️
+
+                <br><br>
+
+                Quiero que sepas que me hace muy feliz
+                poder compartir momentos contigo,
+                reírnos juntos y crear recuerdos que
+                espero que nunca olvidemos.
+
+                <br><br>
+
+                Sabes que siempre estaré para ti,
+                en las buenas y en las malas.
+                Nadie nos va a separar. 💗
+
+                <br><br>
+
+                FELIZ CUMPLEAÑOS, TONTA. ❤️
+
+                <br><br>
+
+                TE AMO MUCHÍSIMO
+                <br>
+                Y HOY ESTAREMOS TODO EL DÍA JUNTOS. 💗
+
+                <br><br>
+
+                Un cumpleaños sin sonrisas no es un cumpleaños,
+                como dice Pinkie Pie. 🎀
+
+                <br><br>
+
+                <strong>
+                    Feliz cumpleaños, amor de mi vida.
+                    Ojalá hoy la pases muy feliz y contenta
+                    con todos los que te quieren. ❤️
+                </strong>
+
+            </p>
+
 
             <button
-                class="boton"
-                id="noBtn"
-                onclick="botonNo()">
+                class="boton volver"
+                onclick="volverInicio()">
 
-                NO GRACIAS 😭
-
-            </button>
-
-
-            <button
-                class="boton boton-si"
-                onclick="mostrarSorpresa()">
-
-                SÍ PORFAVOR 💗
+                VOLVER 💗
 
             </button>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- =====================================
-     PANTALLA DE SORPRESA
-===================================== -->
+    <!-- =====================================
+         INTRO SORPRESA
+    ===================================== -->
 
-<section id="sorpresa" class="pantalla">
+    <div id="intro-sorpresa">
 
-
-    <div class="carta-sorpresa">
-
+        <div class="intro-corazones">
+            💗 💕 💗
+        </div>
 
         <h1>
-            💗 SORPRESA 💗
+            ✨ ¡SORPRESA, VANIA! ✨
         </h1>
 
-
-        <!-- CAMBIA ESTE NOMBRE -->
-
-        <div class="nombre">
-            PARA TI, VANIA HERMOSA
-        </div>
-
-
-        <div class="corazon-grande">
-            ❤️
-        </div>
-<div class="galeria">
-
-    <div class="foto-card">
-        <img src="fotos/foto1.png" alt="Nuestro recuerdo">
-        <p>Un recuerdo que siempre voy a guardar 💗</p>
-    </div>
-
-    <div class="foto-card">
-        <img src="fotos/foto2.png" alt="Nuestro recuerdo">
-        <p>Momentos contigo que me hacen feliz 🥹💗</p>
-    </div>
-
-    <div class="foto-card">
-        <img src="fotos/foto3.png" alt="Nuestro recuerdo">
-        <p>Y LA GUAPA DE MI NOVIA ✨</p>
-    </div>
-
-</div>
-
-
-        <!-- CAMBIA ESTE MENSAJE -->
-<p class="mensaje">
-
-    HOY 29 DE SEPTIEMBRE,<br>
-    NACIÓ UNA GRAN PERSONA<br>
-    LLAMADA VANIA. ❤️
-
-    <br><br>
-
-    Quiero que sepas que me hace muy feliz
-    poder compartir momentos contigo,
-    reírnos juntos y crear recuerdos que
-    espero que nunca olvidemos.
-
-    <br><br>
-
-    Sabes que siempre estaré para ti,
-    en las buenas y en las malas.
-    Nadie nos va a separar. 💗
-
-    <br><br>
-
-    FELIZ CUMPLEAÑOS, TONTA. ❤️
-
-    <br><br>
-
-    TE AMO MUCHÍSIMO
-    <br>
-    Y HOY ESTAREMOS TODO EL DÍA JUNTOS. 💗
-
-    <br><br>
-
-    Un cumpleaños sin sonrisas no es un cumpleaños,
-    como dice Pinkie Pie. 🎀
-
-    <br><br>
-
-    <strong>
-        Feliz cumpleaños, amor de mi vida.
-        Ojalá hoy la pases muy feliz y contenta
-        con todos los que te quieren. ❤️
-    </strong>
-
-</p>
-
-
-        <button
-            class="boton volver"
-            onclick="volverInicio()">
-
-            VOLVER 💗
-
-        </button>
-
+        <p>
+            Preparé esto especialmente para ti 💗
+        </p>
 
     </div>
 
-</section>
 
 
+    <!-- =====================================
+         JAVASCRIPT
+    ===================================== -->
 
-<script>
-function crearCorazon() {
-    const corazon = document.createElement("div");
+    <script>
 
-    corazon.className = "corazon-flotante";
-    corazon.textContent = ["💗", "💕", "💖", "💞"][Math.floor(Math.random() * 4)];
+        /* =====================================
+           MOSTRAR SORPRESA
+        ===================================== */
 
-    corazon.style.left = Math.random() * 100 + "vw";
+        function mostrarSorpresa() {
 
-    document.body.appendChild(corazon);
+            document.getElementById("inicio").style.display = "none";
 
-    setTimeout(() => {
-        corazon.remove();
-    }, 5000);
-}
+            document.getElementById("sorpresa").style.display = "flex";
 
-setInterval(crearCorazon, 1200);
+            lanzarCorazones();
 
-/* =====================================
-   MOSTRAR SORPRESA
-===================================== */
-
-function mostrarSorpresa() {
-
-    document.getElementById("inicio").style.display = "none";
-
-    document.getElementById("sorpresa").style.display = "flex";
-
-    lanzarCorazones();
-
-}
+        }
 
 
-/* =====================================
-   VOLVER
-===================================== */
+        /* =====================================
+           VOLVER AL INICIO
+        ===================================== */
 
-function volverInicio() {
+        function volverInicio() {
 
-    document.getElementById("sorpresa").style.display = "none";
+            document.getElementById("sorpresa").style.display = "none";
 
-    document.getElementById("inicio").style.display = "flex";
+            document.getElementById("inicio").style.display = "flex";
 
-}
-
-
-/* =====================================
-   BOTÓN "NO"
-===================================== */
-
-let veces = 0;
-
-function botonNo() {
-
-    const boton = document.getElementById("noBtn");
-
-    veces++;
-
-    /*
-       Cada vez que intenta decir que NO,
-       el botón cambia de posición.
-    */
-
-    const maxX = Math.min(
-        window.innerWidth * 0.35,
-        180
-    );
-
-    const maxY = Math.min(
-        window.innerHeight * 0.25,
-        120
-    );
-
-    const x =
-        (Math.random() * maxX * 2) - maxX;
-
-    const y =
-        (Math.random() * maxY * 2) - maxY;
-
-    boton.style.transform =
-        `translate(${x}px, ${y}px) rotate(${Math.random() * 10 - 5}deg)`;
+        }
 
 
-    /*
-       Después de varios intentos
-       cambiamos el texto.
-    */
+        /* =====================================
+           BOTON NO
+        ===================================== */
 
-    if (veces === 3) {
+        function botonNo() {
 
-        boton.innerText = "¿SEGURA? 🥺";
+            const boton = document.querySelector(".boton:not(.boton-si)");
 
-    }
+            boton.innerText = "¿SEGURA? 🥺";
 
-    if (veces === 5) {
+            boton.style.transform = "scale(1.08)";
 
-        boton.innerText = "YA PUES 😭";
+            setTimeout(() => {
 
-    }
+                boton.innerText = "NO GRACIAS 😭";
 
-    if (veces >= 7) {
+                boton.style.transform = "scale(1)";
 
-        boton.innerText = "NO TE DEJO 😭💗";
+            }, 1200);
 
-    }
-
-}
+        }
 
 
-/* =====================================
-   CORAZONES FLOTANTES
-===================================== */
+        /* =====================================
+           CREAR CORAZON
+        ===================================== */
 
-function lanzarCorazones() {
+        function crearCorazon() {
 
-    for (let i = 0; i < 30; i++) {
+            const corazon = document.createElement("div");
 
-        setTimeout(() => {
+            corazon.className = "corazon-flotante";
 
-            const corazon =
-                document.createElement("div");
-
-            corazon.className =
-                "corazon-flotante";
-
-            corazon.innerHTML =
-                Math.random() > 0.5
-                ? "❤️"
-                : "💗";
-
+            corazon.textContent =
+                ["💗", "💕", "💖", "💞"][
+                    Math.floor(Math.random() * 4)
+                ];
 
             corazon.style.left =
                 Math.random() * 100 + "vw";
 
-
-            corazon.style.animationDuration =
-                (3 + Math.random() * 4) + "s";
-
-
-            corazon.style.fontSize =
-                (18 + Math.random() * 25) + "px";
-
-
             document.body.appendChild(corazon);
-
 
             setTimeout(() => {
 
                 corazon.remove();
 
-            }, 7000);
+            }, 5000);
+
+        }
 
 
-        }, i * 120);
+        /* =====================================
+           CORAZONES AUTOMATICOS
+        ===================================== */
 
-    }
+        setInterval(crearCorazon, 1200);
 
-}
 
-</script>
+        /* =====================================
+           LANZAR CORAZONES
+        ===================================== */
+
+        function lanzarCorazones() {
+
+            for (let i = 0; i < 20; i++) {
+
+                setTimeout(() => {
+
+                    crearCorazon();
+
+                }, i * 100);
+
+            }
+
+        }
+
+    </script>
 
 </body>
+
 </html>
