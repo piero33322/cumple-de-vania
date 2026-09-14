@@ -411,6 +411,49 @@
     margin: 15px 0 20px;
     text-shadow: 2px 2px 0 #ffd6e7;
 }
+     #sorpresa-final {
+    position: fixed;
+    inset: 0;
+    background: #f7a8c4;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.final-carta {
+    width: min(92%, 600px);
+    background: #fff0f7;
+    border: 3px solid #171717;
+    border-radius: 30px;
+    box-shadow: 0 12px 0 #171717;
+    padding: 40px 25px;
+    text-align: center;
+}
+
+.final-corazon {
+    font-size: 65px;
+}
+
+.final-carta h1 {
+    color: #e85d9e;
+    font-family: "Arial Black", Arial, sans-serif;
+    font-size: 40px;
+    margin: 15px 0 25px;
+}
+
+.final-carta p {
+    color: #6b3450;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 600;
+}
+
+.final-decoracion {
+    font-size: 30px;
+    margin: 25px 0;
+}
         .foto-card p {
             color: #c83d7c;
             font-weight: 900;
@@ -727,7 +770,11 @@
 
             </p>
 
-
+<button
+    class="boton boton-final"
+    onclick="mostrarFinal()">
+    🎁 UNA COSITA MÁS... 👀
+</button>
             <button
                 class="boton volver"
                 onclick="volverInicio()">
@@ -788,8 +835,46 @@
         /* =====================================
            VOLVER AL INICIO
         ===================================== */
+function mostrarFinal() {
 
-        function volverInicio() {
+    const final = document.createElement("div");
+
+    final.id = "sorpresa-final";
+
+    final.innerHTML = `
+        <div class="final-carta">
+            <div class="final-corazon">💗</div>
+
+            <h1>UNA COSITA MÁS... 🎁</h1>
+
+            <p>
+                Gracias por formar parte de tantos momentos
+                bonitos y por hacer cada día un poquito más especial. ❤️
+            </p>
+
+            <div class="final-decoracion">
+                💕 ✨ 💗 ✨ 💕
+            </div>
+
+            <button class="boton" onclick="cerrarFinal()">
+                VOLVER A LA SORPRESA 💗
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(final);
+
+}
+   function cerrarFinal() {
+
+    const final = document.getElementById("sorpresa-final");
+
+    if (final) {
+        final.remove();
+    }
+
+}     
+     function volverInicio() {
 
             document.getElementById("sorpresa").style.display = "none";
 
