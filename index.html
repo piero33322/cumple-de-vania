@@ -888,54 +888,30 @@ function mostrarFinal() {
            BOTON NO
         ===================================== */
 
-        function botonNo() {
+function botonNo() {
 
-            const boton = document.querySelector(".boton:not(.boton-si)");
+    const boton = document.querySelector(".boton:not(.boton-si)");
 
-            boton.innerText = "¿SEGURA? 🥺";
+    boton.innerText = "¿SEGURA? 🥺";
 
-            boton.style.transform = "scale(1.08)";
+    boton.style.position = "fixed";
 
-            setTimeout(() => {
+    const maxX = window.innerWidth - boton.offsetWidth - 20;
+    const maxY = window.innerHeight - boton.offsetHeight - 20;
 
-                boton.innerText = "NO GRACIAS 😭";
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-                boton.style.transform = "scale(1)";
+    boton.style.left = x + "px";
+    boton.style.top = y + "px";
 
-            }, 1200);
+    setTimeout(() => {
 
-        }
+        boton.innerText = "NO GRACIAS 😭";
 
+    }, 1200);
 
-        /* =====================================
-           CREAR CORAZON
-        ===================================== */
-
-        function crearCorazon() {
-
-            const corazon = document.createElement("div");
-
-            corazon.className = "corazon-flotante";
-
-            corazon.textContent =
-                ["💗", "💕", "💖", "💞"][
-                    Math.floor(Math.random() * 4)
-                ];
-
-            corazon.style.left =
-                Math.random() * 100 + "vw";
-
-            document.body.appendChild(corazon);
-
-            setTimeout(() => {
-
-                corazon.remove();
-
-            }, 5000);
-
-        }
-
-
+}
         /* =====================================
            CORAZONES AUTOMATICOS
         ===================================== */
