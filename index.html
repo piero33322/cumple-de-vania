@@ -766,16 +766,14 @@
            MOSTRAR SORPRESA
         ===================================== */
 
-        function mostrarSorpresa() {
+     function mostrarSorpresa() {
 
-            document.getElementById("inicio").style.display = "none";
+    document.getElementById("inicio").style.display = "none";
 
-            document.getElementById("sorpresa").style.display = "flex";
+    document.getElementById("sorpresa").style.display = "flex";
 
-            lanzarCorazones();
-
-        }
-
+    lanzarCorazones();
+    lanzarConfeti();
 
         /* =====================================
            VOLVER AL INICIO
@@ -866,6 +864,50 @@
             }
 
         }
+      function lanzarConfeti() {
+
+    for (let i = 0; i < 60; i++) {
+
+        const confeti = document.createElement("div");
+
+        confeti.textContent = ["🎉", "💗", "💕", "✨", "🎀"][
+            Math.floor(Math.random() * 5)
+        ];
+
+        confeti.style.position = "fixed";
+        confeti.style.top = "-30px";
+        confeti.style.left = Math.random() * 100 + "vw";
+        confeti.style.fontSize = (15 + Math.random() * 20) + "px";
+        confeti.style.zIndex = "99999";
+        confeti.style.pointerEvents = "none";
+
+        document.body.appendChild(confeti);
+
+        const duracion = 2000 + Math.random() * 2500;
+
+        confeti.animate(
+            [
+                {
+                    transform: "translateY(0) rotate(0deg)",
+                    opacity: 1
+                },
+                {
+                    transform:
+                        "translateY(110vh) rotate(720deg)",
+                    opacity: 0
+                }
+            ],
+            {
+                duration: duracion,
+                easing: "linear"
+            }
+        );
+
+        setTimeout(() => {
+            confeti.remove();
+        }, duracion);
+    }
+}
 
     </script>
 
